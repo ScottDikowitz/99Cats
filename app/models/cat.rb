@@ -5,6 +5,13 @@ class Cat < ActiveRecord::Base
   validates :sex, inclusion: { :in => ['M', 'F'] }
   validates :color, inclusion:  { :in => ["brown","orange","black","white","grey"] }
 
+  has_many(
+    :cat_rental_requests,
+    class_name: "CatRentalRequest",
+    foreign_key: :cat_id,
+    primary_key: :id
+  )
+
   def age
     Date.current - birth_date
   end
