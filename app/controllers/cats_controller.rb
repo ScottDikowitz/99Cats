@@ -12,7 +12,11 @@ class CatsController < ApplicationController
   end
 
   def create
-    Cat.create!(cat_params)
+    cat = Cat.new(cat_params)
+    cat.user_id = current_user.id
+    p current_user.user_name
+    p "----------aaaaaaaaaddd"
+    cat.save!
     redirect_to cats_url
   end
 
