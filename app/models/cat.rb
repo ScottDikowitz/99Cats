@@ -6,10 +6,11 @@ class Cat < ActiveRecord::Base
   validates :color, inclusion:  { :in => ["brown","orange","black","white","grey"] }
 
   has_many(
-    :cat_rental_requests,
+    :rental_requests,
     class_name: "CatRentalRequest",
     foreign_key: :cat_id,
-    primary_key: :id
+    primary_key: :id,
+    :dependent => :destroy
   )
 
   def age
