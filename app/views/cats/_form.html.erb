@@ -2,6 +2,9 @@
     <% if cat.persisted? %>
     <form action=<%=cat_url(cat) %> method="post">
     <input type="hidden" name = "_method" value = "Patch">
+    <input type="hidden"
+         name="authenticity_token"
+         value="<%= form_authenticity_token %>">
     <% else %>
     <form action=<%=cats_url%> method="post">
     <% end %>

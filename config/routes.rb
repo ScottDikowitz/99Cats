@@ -18,7 +18,8 @@ Rails.application.routes.draw do
     post "approve", on: :member
     post "deny", on: :member
   end
-
+  resource :user
+  resource :session, only: [:destroy, :create, :new]
   root to: redirect("/cats")
   # Example resource route with options:
   #   resources :products do
